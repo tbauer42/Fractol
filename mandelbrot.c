@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:01:16 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 15:26:49 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 20:13:56 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,25 @@
 
 void	init_brot(t_img *o)
 {
-	o->x1 = -2.1;
-	o->x2 = 0.6;
-	o->y1 = -1.2;
-	o->y2 = 1.2;
-	o->x = 0;
-	o->y = 0;
-	o->rc = 0;
-	o->ic = 0;
-	o->rz = 0;
-	o->iz = 0;
-	o->i = 0;
-	o->tmp = 0;
-	o->image_x = (o->x2 - o->x1) *o-> zoom;
-	o->image_y = (o->y2 - o->y1) * o->zoom;
+	if (o->flag == 0)
+	{
+		o->x1 = -2.0;
+		o->x2 = 1.0;
+		o->y1 = -1.5;
+		o->y2 = 1.5;
+		o->zoom = 150;
+		o->image_x = (o->x2 - o->x1) *o-> zoom;
+		o->image_y = (o->y2 - o->y1) * o->zoom;
+	}
+		o->x = 0;
+		o->y = 0;
+		o->rc = 0;
+		o->ic = 0;
+		o->rz = 0;
+		o->iz = 0;
+		o->i = 0;
+		o->tmp = 0;
+
 	//mlx_clear_window(o->mlx, o->win);
 	mlx_destroy_image(o->mlx, o->img);
 	o->pix = mlx_get_data_addr(o->img, &o->bpp, &o->size_line, &o->endian);

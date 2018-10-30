@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:06 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 15:24:24 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 20:48:54 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -22,9 +22,16 @@
 # define LEFT 123
 # define BOT 125
 # define TOP 126
+# define ESC 53
+# define MOLUP 5
+# define MOLDOWN 4
 
 typedef	struct	s_img
 {
+	int		brot;
+	int		julio;
+	int		shipo;
+	int		flag;
 	char **argv;
 	void	*img;
 	void	*win;
@@ -55,6 +62,8 @@ typedef	struct	s_img
 	double	image_y;
 }				t_img;
 
+int		mouse_code(int mouse,int x, int y, t_img *env);
+
 int		key_code(int key, t_img *env);
 
 void	my_putpixel(t_img *env, int x, int y, int color);
@@ -67,6 +76,6 @@ void	julia(t_img *env);
 
 void	aff(t_img *env, char **argv, int argc);
 
-#define WINX 500
-#define WINY 500
+#define WINX 450
+#define WINY 450
 #endif
