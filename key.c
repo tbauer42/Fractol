@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 20:34:09 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/29 15:42:58 by tbauer           ###   ########.fr       */
+/*   Created: 2018/10/29 15:52:54 by tbauer            #+#    #+#             */
+/*   Updated: 2018/10/30 15:15:57 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fractol.h"
 
-void	my_putpixel(t_img *env, int x, int y, int color)
+void	zoum(t_img *o)
 {
-	int	pos;
-	int	mask;
-
-	if ((x >= 0 && x <= WINX) && (y >= 0 && y <= WINY))
-	{
-		pos = (y * env->size_line + x * 4);
-		mask = color;
-		env->pix[pos] = mask;
-		color = color >> 8;
-		mask = color;
-		env->pix[pos + 1] = mask;
-		color = color >> 8;
-		mask = color;
-		env->pix[pos + 2] = mask;
-		env->pix[pos + 3] = 0x00;
-	}
+	o->zoom += 100;
 }
+
+int		key_code(int key, t_img *o)
+{
+	mlx_clear_window(o->mlx, o->win);
+	if (key == ZOOM)
+		zoum(o);/*o->zoom+=100;
+	if (key == DEZOOM)
+		o->zoom-=100;
+	if (key == RIGHT)
+		o->x1 += 0.1;
+	if (key == LEFT)
+		o->x2 -= 0.1;
+	if (key == BOT)
+		o->y1 += 0.1;
+	if (key == TOP)
+		o->y2 -= 0.1;*/
+	mandelbrot(o);
+	return 0;
+}
+

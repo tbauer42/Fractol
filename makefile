@@ -6,7 +6,7 @@
 #    By: tbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:10:45 by tbauer            #+#    #+#              #
-#    Updated: 2018/10/26 19:23:21 by tbauer           ###   ########.fr        #
+#    Updated: 2018/10/29 20:16:03 by tbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ WARNINGS = -Werror -Wextra -Wall
 
 LIB = -L  minilibx_macos -lmlx -framework OpenGL -framework AppKit -L Libft/ -lft  -I.
 
-OBJC = julia.c main.c fractol.c
+OBJC = aff.c julia.c main.c burning_ship.c fractol.c mandelbrot.c key.c
 OBJ = $(OBJC:.c=.o)
 
 all: $(NAME)

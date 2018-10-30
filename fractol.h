@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:06 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/26 19:22:44 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 15:24:24 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -16,8 +16,16 @@
 #include <stdlib.h>
 #include "mlx.h"
 
+# define ZOOM 69
+# define DEZOOM 78
+# define RIGHT 124
+# define LEFT 123
+# define BOT 125
+# define TOP 126
+
 typedef	struct	s_img
 {
+	char **argv;
 	void	*img;
 	void	*win;
 	void	*mlx;
@@ -41,16 +49,24 @@ typedef	struct	s_img
 	double	iz;
 	double	tmp;
 	int		i;
+	double	z;
+	int		k;
 	double	image_x;
 	double	image_y;
 }				t_img;
 
+int		key_code(int key, t_img *env);
+
 void	my_putpixel(t_img *env, int x, int y, int color);
 
-void	recup(t_img *env);
+void	ship(t_img *env);
+
+void	mandelbrot(t_img *env);
 
 void	julia(t_img *env);
 
-#define WINX 1400
-#define WINY 1400
+void	aff(t_img *env, char **argv, int argc);
+
+#define WINX 500
+#define WINY 500
 #endif

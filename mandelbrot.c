@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:01:16 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/26 18:58:59 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 15:26:49 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	init_brot(t_img *o)
 	o->x2 = 0.6;
 	o->y1 = -1.2;
 	o->y2 = 1.2;
-	o->zoom = 400;
 	o->x = 0;
 	o->y = 0;
 	o->rc = 0;
@@ -30,9 +29,13 @@ void	init_brot(t_img *o)
 	o->tmp = 0;
 	o->image_x = (o->x2 - o->x1) *o-> zoom;
 	o->image_y = (o->y2 - o->y1) * o->zoom;
+	//mlx_clear_window(o->mlx, o->win);
+	mlx_destroy_image(o->mlx, o->img);
+	o->pix = mlx_get_data_addr(o->img, &o->bpp, &o->size_line, &o->endian);
+	o->img = mlx_new_image(o->mlx, WINX, WINY);
 }
 
-void recup(t_img *o)
+void mandelbrot(t_img *o)
 {
 	init_brot(o);
 	while (o->x < o->image_x)
@@ -60,4 +63,5 @@ void recup(t_img *o)
 		}
 		o->x++;
 	}
+	mlx_put_image_to_window(o->mlx, o->win, o->img, 0, 0);
 }
