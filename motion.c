@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   motion.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 17:28:19 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 17:28:23 by tbauer           ###   ########.fr       */
+/*   Created: 2018/10/31 14:13:27 by tbauer            #+#    #+#             */
+/*   Updated: 2018/10/31 16:32:57 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fractol.h"
 
-int		ft_isalpha(int c)
+int	ft_moovit(int x, int y, t_img *o)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	else if (c >= 'a' && c <= 'z')
-		return (1);
-	else
-		return (0);
+	o->flag++;
+	o->rc = ((double)(x * 2) / o->image_x) - 1;
+	o->ic = ((double)(y * 2) / o->image_y) - 1;
+	julia(o);
+	return (0);
 }

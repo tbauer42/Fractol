@@ -6,16 +6,19 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 20:00:06 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 20:48:54 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/31 17:17:37 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include "Libft/includes/libft.h"
-#include <stdlib.h>
-#include "mlx.h"
+# include "Libft/includes/libft.h"
+# include <stdlib.h>
+# include "mlx.h"
 
+# define M 46
+# define L 37
 # define ZOOM 69
 # define DEZOOM 78
 # define RIGHT 124
@@ -25,14 +28,21 @@
 # define ESC 53
 # define MOLUP 5
 # define MOLDOWN 4
+# define S 1
+# define R 15
 
 typedef	struct	s_img
 {
+	int		color;
+	int		guy;
+	int		guy2;
+	int		j;
+	int		iter_max;
 	int		brot;
 	int		julio;
 	int		shipo;
 	int		flag;
-	char **argv;
+	char	**argv;
 	void	*img;
 	void	*win;
 	void	*mlx;
@@ -62,20 +72,23 @@ typedef	struct	s_img
 	double	image_y;
 }				t_img;
 
-int		mouse_code(int mouse,int x, int y, t_img *env);
+int				ft_moovit(int x, int y, t_img *env);
 
-int		key_code(int key, t_img *env);
+int				mouse_code(int mouse, int x, int y, t_img *env);
 
-void	my_putpixel(t_img *env, int x, int y, int color);
+int				key_code(int key, t_img *env);
 
-void	ship(t_img *env);
+void			my_putpixel(t_img *env, int x, int y, int color);
 
-void	mandelbrot(t_img *env);
+void			ship(t_img *env);
 
-void	julia(t_img *env);
+void			mandelbrot(t_img *env);
 
-void	aff(t_img *env, char **argv, int argc);
+void			julia(t_img *env);
 
-#define WINX 450
-#define WINY 450
+void			aff(t_img *env, char **argv, int argc);
+
+# define WINX 450
+# define WINY 450
+
 #endif
