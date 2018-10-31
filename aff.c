@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 15:26:38 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/31 16:18:20 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/31 18:02:29 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	no_param(void)
 {
-	ft_putstr("Try with : Mandelbrot, Julia or Burning ship.\n");
+	ft_putstr("Try with : Mandelbrot, Julia or Burningship.\n");
 	exit(1);
 }
 
@@ -39,7 +39,7 @@ void	aff(t_img *o, char **av, int argc)
 		}
 		else
 		{
-			ft_putstr("Try with : Mandelbrot, Julia or Burning ship.\n");
+			ft_putstr("Try with : Mandelbrot, Julia or Burningship.\n");
 			exit(1);
 		}
 	}
