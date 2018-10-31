@@ -6,14 +6,22 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 19:59:02 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/31 17:14:37 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/31 18:58:43 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+void	ft_error(int argc, char **av)
+{
+	if (!((argc == 2) && ((ft_strcmp(av[1], "Mandelbrot") == 0) || \
+			(ft_strcmp(av[1], "Julia") == 0) || \
+			(ft_strcmp(av[1], "Burningship") == 0))))
+		exit(1);
+}
+
+int		main(int argc, char **argv)
 {
 	t_img	env;
 
@@ -25,6 +33,7 @@ int	main(int argc, char **argv)
 	env.k = 0;
 	env.z = 0.1;
 	env.j = 0;
+	ft_error(argc, argv);
 	env.img_x = WINX;
 	env.img_y = WINY;
 	env.mlx = mlx_init();
